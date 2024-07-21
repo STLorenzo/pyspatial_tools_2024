@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  app:
+    # BUILD
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: dev
+      args:
+        PYTHON_VERSION: ${PYTHON_VERSION}
+        DOCKER_USER: $USER
+    # RUN
+    container_name: ${CONTAINER_NAME}
+    command: sleep infinity
+    ports:
+      - "${JL_PORT}:8888"
+    volumes:
+      - ${DATA_DIR}:/opt/data
+      - ..:/opt/app
+    environment:
+      MINIO_URL: http://minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    hostname: minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - project_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  project_data:
+    name: ${DATA_VOLUME}
+    
