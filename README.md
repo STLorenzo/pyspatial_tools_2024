@@ -13,3 +13,6 @@ cp resources/template/dev.env.template .devcontainer/.env
 
 ## Distribution
 
+```bash
+python3 -m build
+```
