@@ -3,25 +3,36 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "app"
+name = "pato_spatial"
 version = "0.1.0"
-authors = [{name = "", email = "test@gmail.com"}]
-description = "A small example package"
+authors = [{name = "Strider", email = "sergio.t.lorenzo@gmail.com"}]
+description = "Python spatial data processing engines comparison."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
-    "geopandas==0.14.*",
-    "pandas==2.2.*",
-    "polars==0.20.*",
+    # Needed by geopandas for explore()
+    "folium", 
+    "mapclassify", 
+    "matplotlib", 
+    # (Geo)Parquet support
+    "pyarrow",  
+    # Spatial libraries
+    "pandas",
+    "geopandas",
+    "polars",
+    "duckdb",
+    "scipy",
+    "h3"
 ]
 
 [project.optional-dependencies]
 dev = [
     # Build
-    "build==1.2.*", 
+    "build", 
     # Testing
     "pytest",
     "pytest-cov",
+    "pytest-mock",
     # Docs
     "mkdocs",
     "mike",
