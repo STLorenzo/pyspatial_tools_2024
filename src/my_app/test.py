@@ -7,7 +7,8 @@ __copyright__ = "Copyright 2024"
 
 import polars as pl
 
-def suma(a,b):
+
+def suma(a, b):
     return a + b
 
 
