@@ -22,7 +22,8 @@ dependencies = [
     "polars",
     "duckdb",
     "scipy",
-    "h3"
+    "h3",
+    "deltalake"
 ]
 
 [project.optional-dependencies]
