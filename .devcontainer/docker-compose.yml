@@ -1,8 +1,7 @@
-version: '3'
-
 services:
   app:
     # BUILD
+    image: pato_spatial:1.0-dev
     build:
       context: ..
       dockerfile: Dockerfile
