@@ -26,6 +26,7 @@ dependencies = [
     "deltalake",
     # Pyspark
     "pyspark==3.5.1",
+    "apache-sedona==1.7.0",
     "py4j"
 ]
 
