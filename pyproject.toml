@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "app"
-version = "0.1.0"
+version = "0.1.1"
 authors = [{name = "", email = "test@gmail.com"}]
 description = "A small example package"
 readme = "README.md"
@@ -13,6 +13,7 @@ dependencies = [
     "geopandas==0.14.*",
     "pandas==2.2.*",
     "polars==0.20.*",
+    "pyspark==3.5.3"
 ]
 
 [project.optional-dependencies]

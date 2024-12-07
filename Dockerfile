@@ -3,7 +3,7 @@
 ##############
 
 # Use the official Python image as the base image
-ARG PYTHON_VERSION=3.12
+ARG PYTHON_VERSION=3.13
 FROM python:${PYTHON_VERSION} as base
 
 # Install OS libraries
