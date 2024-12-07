@@ -7,16 +7,25 @@ services:
       dockerfile: Dockerfile
       target: dev
       args:
-        PYTHON_VERSION: ${PYTHON_VERSION}
-        DOCKER_USER: $USER
+        - PYTHON_VERSION=${PYTHON_VERSION}
+        - DOCKER_USER=$USER
+        - JDK_VERSION=${JDK_VERSION}
+        - SPARK_VERSION=${SPARK_VERSION}
+        - SCALA_VERSION=${SCALA_VERSION}
+        - SEDONA_VERSION=${SEDONA_VERSION}
+        - GEOTOOLS_WRAPPER_VERSION=${GEOTOOLS_WRAPPER_VERSION}
     # RUN
     container_name: ${CONTAINER_NAME}
+    hostname: ${CONTAINER_NAME}
     command: sleep infinity
     ports:
-      - "${JL_PORT}:8888"
+      - "127.0.0.1:${JL_PORT}:8888"
+      - "127.0.0.1:${SUI_PORT}:4040"
+      - "127.0.0.1:${SHS_PORT}:18080"
     volumes:
-      - ${DATA_DIR}:/opt/data
       - ..:/opt/app
+      - ${DATA_DIR}:/opt/data
+      - ${SPARK_LOGS_DIR}:/opt/spark/spark-events
     environment:
       MINIO_URL: http://minio:9000
       MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
