@@ -53,17 +53,81 @@ graph TD
 classDiagram
     class Configuration {
         - _instance: Configuration
-        - default_config: dict
-        - config: dict
+        - _default_config: dict
+        - _config: dict
         + __new__(cls, *args, **kwargs): Configuration
         + _initialize(): void
         + _load_default_config(): dict
+        + default_config(): dict
+        + config(): dict
         + load_config_from_file(config_path: str): void
         + override_config(**kwargs): void
+        + override_config_file(config_file_path: str): void
         + get_config(): dict
     }
 
+    class Vehicle {
+        +move()
+    }
+
+    class Car {
+        +startEngine()
+    }
+    Vehicle <|-- Car
+
+    class Engine {
+        +start()
+        +stop()
+    }
+    Car *-- Engine
+
+    class Player {
+        +name: String
+        +score: int
+    }
+    class Team {
+        +addPlayer(player: Player)
+    }
+    Team o-- Player
+
+    class Customer {
+        +name: String
+    }
+    class Order {
+        +id: int
+    }
+    Customer --> Order
+
+    class Person {
+        +name: String
+        +address: Address
+    }
+    class Address {
+        +street: String
+        +city: String
+    }
+    Person -- Address
+
+    class Logger {
+        +log(message: String)
+    }
+    class Formatter {
+        +format(message: String): String
+    }
+    Logger ..> Formatter
+
+    class Storage {
+        +save(data: String)
+    }
+    class Database {
+        +save(data: String)
+    }
+    Storage ..|> Database
+
 ```
+
+
+
 
 
 ### Explanation:

@@ -8,20 +8,17 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        // Python deps
         "ms-python.python",
         "ms-python.vscode-pylance",
-        // Linting
         "charliermarsh.ruff",
-        // Version Control - Git
         "mhutchie.git-graph",
         "codezombiech.gitignore",
         "vivaxy.vscode-conventional-commits",
         "eamodio.gitlens",
-        // Dev Tools
         "tamasfe.even-better-toml",
         "kamilturek.vscode-pyproject-toml-snippets",
-        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter",
+        "bierner.markdown-mermaid"
       ]
     }
   }
